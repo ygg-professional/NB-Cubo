@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dibujo Cubo en Canvas</title>
+  <style>
+    /* El body ocupa toda la pantalla y usa flexbox para centrar contenido */
+    body {
+      margin: 0;
+      height: 100vh; /* altura total viewport */
+      display: flex;
+      justify-content: center; /* centra horizontalmente */
+      align-items: center;     /* centra verticalmente */
+      background-color: white;
+    }
+    canvas {
+      border: 1px solid #ccc;
+      display: block;
+      /* margin removido para evitar interferir con flexbox */
+    }
+  </style>
+</head>
+<body>
+  <canvas id="cubo" width="400" height="400"></canvas>
+  <script>
+    const canvas = document.getElementById('cubo');
+    const ctx = canvas.getContext('2d');
+    ctx.lineWidth = 2;
+
+    // Define las líneas (igual que en Java)
+    const lineas = [
+      [100, 130, 100, 280],
+      [250, 130, 250, 280],
+      [100, 130, 250, 130],
+      [100, 280, 250, 280],
+      [175, 90, 175, 240],
+      [325, 90, 325, 240],
+      [175, 90, 325, 90],
+      [175, 240, 325, 240],
+      [100, 130, 175, 90],
+      [250, 130, 325, 90],
+      [100, 280, 175, 240],
+      [250, 280, 325, 240]
+    ];
+
+    // Dibuja cada línea
+    lineas.forEach(([x1, y1, x2, y2]) => {
+      ctx.beginPath();
+      ctx.moveTo(x1, y1);
+      ctx.lineTo(x2, y2);
+      ctx.stroke();
+    });
+  </script>
+</body>
+</html>
